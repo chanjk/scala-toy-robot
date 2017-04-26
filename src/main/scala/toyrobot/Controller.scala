@@ -9,4 +9,11 @@ object Controller {
     case South => robot.copy(y = robot.y - 1)
     case West => robot.copy(x = robot.x - 1)
   }
+
+  def left(robot: Robot): Robot = robot.direction match {
+    case North => robot.copy(direction = West)
+    case East => robot.copy(direction = North)
+    case South => robot.copy(direction = East)
+    case West => robot.copy(direction = South)
+  }
 }

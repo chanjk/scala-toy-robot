@@ -31,4 +31,22 @@ class ControllerSpec extends FunSpec with Matchers {
       move(Robot(2, 2, West)) shouldBe Robot(1, 2, West)
     }
   }
+
+  describe("left") {
+    it("should turn a robot facing NORTH to the WEST, without changing position") {
+      left(Robot(0, 0, North)) shouldBe Robot(0, 0, West)
+    }
+
+    it("should turn a robot facing EAST to the NORTH, without changing position") {
+      left(Robot(1, 1, East)) shouldBe Robot(1, 1, North)
+    }
+
+    it("should turn a robot facing SOUTH to the EAST, without changing position") {
+      left(Robot(2, 2, South)) shouldBe Robot(2, 2, East)
+    }
+
+    it("should turn a robot facing WEST to the SOUTH, without changing position") {
+      left(Robot(3, 3, West)) shouldBe Robot(3, 3, South)
+    }
+  }
 }
