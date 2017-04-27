@@ -67,4 +67,13 @@ class ControllerSpec extends FunSpec with Matchers {
       right(Robot(3, 3, West)) shouldBe Robot(3, 3, North)
     }
   }
+
+  describe("report") {
+    it("should return the robot status in the form X, Y, DIRECTION") {
+      report(Robot(3, 3, North)) shouldBe "3, 3, NORTH"
+      report(Robot(2, 2, East)) shouldBe "2, 2, EAST"
+      report(Robot(1, 1, South)) shouldBe "1, 1, SOUTH"
+      report(Robot(0, 0, West)) shouldBe "0, 0, WEST"
+    }
+  }
 }

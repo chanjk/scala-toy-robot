@@ -18,4 +18,6 @@ object Controller {
   }
 
   def right(robot: Robot): Robot = (left _ andThen left _ andThen left _)(robot)
+
+  def report(robot: Robot): String = s"${robot.x}, ${robot.y}, ${robot.direction}".toUpperCase
 }
