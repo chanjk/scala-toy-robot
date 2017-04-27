@@ -16,4 +16,6 @@ object Controller {
     case South => robot.copy(direction = East)
     case West => robot.copy(direction = South)
   }
+
+  def right(robot: Robot): Robot = (left _ andThen left _ andThen left _)(robot)
 }
