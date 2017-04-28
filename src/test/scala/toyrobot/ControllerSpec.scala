@@ -78,20 +78,20 @@ class ControllerSpec extends FunSpec with Matchers {
   }
 
   describe("report") {
-    it("should return 3, 3, NORTH for a robot at 3, 3 facing North") {
-      report(Robot(3, 3, North)) shouldBe "3, 3, NORTH"
+    it("should return 3,3,NORTH for a robot at 3, 3 facing North") {
+      report(Robot(3, 3, North)) shouldBe "3,3,NORTH"
     }
 
-    it("should return 2, 2, EAST for a robot at 2, 2 facing East") {
-      report(Robot(2, 2, East)) shouldBe "2, 2, EAST"
+    it("should return 2,2,EAST for a robot at 2, 2 facing East") {
+      report(Robot(2, 2, East)) shouldBe "2,2,EAST"
     }
 
-    it("should return 1, 1, SOUTH for a robot at 1, 1 facing South") {
-      report(Robot(1, 1, South)) shouldBe "1, 1, SOUTH"
+    it("should return 1,1,SOUTH for a robot at 1, 1 facing South") {
+      report(Robot(1, 1, South)) shouldBe "1,1,SOUTH"
     }
 
-    it("should return 0, 0, WEST for a robot at 0, 0 facing West") {
-      report(Robot(0, 0, West)) shouldBe "0, 0, WEST"
+    it("should return 0,0,WEST for a robot at 0, 0 facing West") {
+      report(Robot(0, 0, West)) shouldBe "0,0,WEST"
     }
   }
 }
