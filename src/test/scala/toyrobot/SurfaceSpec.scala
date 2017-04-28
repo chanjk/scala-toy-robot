@@ -18,9 +18,15 @@ class SurfaceSpec extends FunSpec with Matchers with GeneratorDrivenPropertyChec
       forAll (validCoord, validCoord) { (x: Int, y: Int) => table(x, y) shouldBe true }
     }
 
-    it("should be false when at least one of (x, y) are not between 0 to 4 (both inclusive)") {
+    it("should be false when x is not between 0 to 4 (both inclusive)") {
       forAll (invalidCoord, validCoord) { (x: Int, y: Int) => table(x, y) shouldBe false }
+    }
+
+    it("should be false when y is not between 0 to 4 (both inclusive)") {
       forAll (validCoord, invalidCoord) { (x: Int, y: Int) => table(x, y) shouldBe false }
+    }
+
+    it("should be false when both x and y are not between 0 to 4 (both inclusive)") {
       forAll (invalidCoord, invalidCoord) { (x: Int, y: Int) => table(x, y) shouldBe false }
     }
   }
