@@ -4,6 +4,7 @@ import scala.io.StdIn.readLine
 import scala.util.Try
 
 import Controller._
+import Surface._
 
 object Main extends App {
   private val welcomeMessage = """
@@ -26,22 +27,23 @@ object Main extends App {
     def loop(currentRobot: Option[Robot]): Unit = {
       val x :: xs = Try(readLine("> ").trim.toUpperCase.split("\\s+").toList) getOrElse { return }
 
-      (x, currentRobot) match {
+      val nextRobot = (x, currentRobot) match {
         case ("PLACE", _) => {
           val args = xs flatMap (_.split(","))
-          val newRobot = Try(place(args(0).toInt, args(1).toInt, directionMap(args(2)))).toOption
-          loop(newRobot orElse currentRobot)
+          Try(place(args(0).toInt, args(1).toInt, directionMap(args(2)))).toOption
         }
-        case (_, None) => loop(None)
-        case ("MOVE", _) => loop(currentRobot map move)
-        case ("LEFT", _) => loop(currentRobot map left)
-        case ("RIGHT", _) => loop(currentRobot map right)
+        case (_, None) => None
+        case ("MOVE", _) => currentRobot map move
+        case ("LEFT", _) => currentRobot map left
+        case ("RIGHT", _) => currentRobot map right
         case ("REPORT", _) => {
           println(report(currentRobot.get))
-          loop(currentRobot)
+          currentRobot
         }
-        case _ => loop(currentRobot)
+        case _ => currentRobot
       }
+
+      loop(nextRobot filter (r => table(r.x, r.y)) orElse currentRobot)
     }
 
     loop(None)
